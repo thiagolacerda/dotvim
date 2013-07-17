@@ -1,0 +1,38 @@
+Inspired by omailson's dotvim (https://github.com/omailson/dotvim), I decided
+to make my own, with my preferences
+
+== Dependencies ==
+
+Some that I can remember now:
+
+python27
+git
+ruby
+
+
+== Steps to use ==
+
+Run in the root project dir:
+
+$ ./configure.py
+
+This will:
+
+    * Create a minimal vimrc file, that will source the real vim configuration file -> dotvimrc.vim
+      You can edit the dotvimrc.vim file to reflect your preferences.
+    * Create a plugins dir and clone all the plugins repositories in pluginsrepos file
+    * Create a .backup and .tmp dir, for backup and temporary files, respectively
+
+Then run make
+
+$ make
+
+This will compile the command-t plugin and generate your plugins help tags.
+
+The install it with:
+
+$ make install
+
+This will create a symbolic link at ~/.vimrc, pointing to vimrc file, created by configure
+
+Have Fun!
