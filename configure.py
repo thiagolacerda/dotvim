@@ -32,10 +32,13 @@ def _getPluginRepos():
     return plugins
 
 
+def _cloneExuberantCTags():
+    subprocess.check_call(['git', 'clone', 'https://github.com/mortice/exuberant-ctags.git'])
+
+
 def _clonePlugins():
     plugins = _getPluginRepos()
     os.chdir('plugins')
-    print os.getcwd()
     for plugin in plugins:
         command = 'git clone %s' % plugin['repo']
         subprocess.check_call(['git', 'clone', plugin['repo']])
@@ -44,4 +47,5 @@ def _clonePlugins():
 if __name__ == '__main__':
     _setupDirs()
     _setupVimrc()
+    _cloneExuberantCTags()
     _clonePlugins()

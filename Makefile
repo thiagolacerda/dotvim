@@ -1,4 +1,11 @@
-all: commandt helptags
+TOP := $(shell pwd)
+
+all: exuberant commandt helptags
+
+exuberant:
+	cd exuberant-ctags/;\
+		./configure --prefix=$(TOP)/exuberant-ctags;\
+		make clean && make && make install
 
 commandt:
 	cd plugins/command-t/ruby/command-t/;\

@@ -2,3 +2,4 @@ plugins
 .backup
 .tmp
 vimrc
+exuberant-ctags
