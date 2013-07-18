@@ -170,3 +170,8 @@ let g:CommandTScanDotDirectories=1
 let g:tagbar_ctags_bin=g:dotvim_path."/exuberant-ctags/bin/ctags"
 nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
+
+"" Bookmarking
+map bb :ToggleBookmark<CR>
+map bn :NextBookmark<CR>
+map bp :PreviousBookmark<CR>
