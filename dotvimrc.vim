@@ -5,9 +5,8 @@ set t_Co=256
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Set where the vim folder is located. It's useful if you put your plugins in
-" a folder other than ~/.vim
-exe "set runtimepath=".g:dotvim_path.",".&runtimepath
+" Set the runtimepath, in order to vim find pathogen, so plugins can be installed properly
+exe "set runtimepath=".g:dotvim_path."/plugins/vim-pathogen,".&runtimepath
 
 " Include pathogen
 call pathogen#infect(g:dotvim_path."/plugins/{}")
