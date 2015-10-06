@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import os
-import subprocess
 import json
+import os
 import shutil
+import subprocess
 
 def _setupDirs():
     if not os.path.exists('plugins'):
