@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 
-def _setupDirs():
+def _setupDirsAndFiles():
     if not os.path.exists('plugins'):
         os.makedirs('plugins')
     if not os.path.exists('.backup'):
@@ -14,6 +14,7 @@ def _setupDirs():
     if not os.path.exists('.tmp'):
         os.makedirs('.tmp')
 
+    open('plugins_vimrc.vim', 'w').close()
 
 def _setupVimrc():
     f = open('vimrc', 'w')
@@ -25,32 +26,55 @@ def _setupVimrc():
     f.write('" source the real vimrc file\nexe "source ".g:dotvim_path."/dotvimrc.vim"')
     f.close()
 
+def _getVundle():
+    os.chdir('plugins')
+    vundle = 'vundle'
+    if os.path.exists(vundle):
+        os.chdir(vundle)
+        subprocess.check_call(['git', 'remote', 'update'])
+        subprocess.check_call(['git', 'reset', '--hard', 'origin/master'])
+        os.chdir('..')
+    else:
+        subprocess.check_call(['git', 'clone', 'https://github.com/VundleVim/Vundle.vim.git', vundle])
 
-def _getPluginRepos():
-    f = open('pluginsrepos')
+    os.chdir('..')
+
+def _getVundlePluginsList():
+    f = open('vundlepluginslist')
     plugins = json.load(f)
     f.close()
     return plugins
 
-def _cloneOrUpdatePlugins(update):
-    plugins = _getPluginRepos()
-    os.chdir('plugins')
+def addVimrcCommands(pluginRepo, commands):
+    if len(commands) == 0:
+        return
+
+    f = open('plugins_vimrc.vim', 'a')
+    f.write('" %s\n' % os.path.basename(pluginRepo).split(".git")[0])
+    for command in commands:
+        f.write('%s\n' % command)
+
+    f.write('\n')
+    f.close()
+
+def _createVundleConfigFile():
+    plugins = _getVundlePluginsList()
+    f = open('vundleconfig.vim', 'w')
+    f.write('" set the runtime path to include Vundle and initialize\n')
+    f.write('exe "set rtp+=".g:dotvim_path."/plugins/vundle"\n')
+    f.write('call vundle#begin()\n')
+    f.write('\n" List of plugins\n')
     for plugin in plugins:
-        try:
-            if update and os.path.exists(plugin['name']):
-                subprocess.check_call(['git', 'remote', 'update'])
-                subprocess.check_call(['git', 'reset', '--hard', 'origin/master'])
-            else:
-                subprocess.check_call(['git', 'clone', plugin['repo'], plugin['name']])
-        except:
-            pass
+        f.write('Plugin \'%s\'\n' % plugin['repo'])
+        addVimrcCommands(plugin['repo'], plugin['vimrc_cmds'])
+
+    f.write('\ncall vundle#end()\n')
+    f.write('\nfiletype plugin indent on\n')
+    f.close()
 
 
 if __name__ == '__main__':
-    update = False
-    if len(sys.argv) > 1 and sys.argv[1] == '--update':
-        update = True
-
-    _setupDirs()
+    _setupDirsAndFiles()
+    _getVundle()
     _setupVimrc()
-    _cloneOrUpdatePlugins(update)
+    _createVundleConfigFile()

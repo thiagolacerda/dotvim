@@ -1,0 +1,64 @@
+[
+    {
+        "repo": "tpope/vim-fugitive.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "scrooloose/syntastic.git",
+        "vimrc_cmds": ["let g:syntastic_mode_map = { 'mode': 'passive'}"]
+    },
+    {
+        "repo": "vim-scripts/a.vim.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "scrooloose/nerdtree.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "corntrace/bufexplorer.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "tpope/vim-surround.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "vim-scripts/AutoClose.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "dterei/VimBookmarking.git",
+        "vimrc_cmds": [
+            "map bb :ToggleBookmark<CR>",
+            "map bn :NextBookmark<CR>",
+            "map bp :PreviousBookmark<CR>"
+        ]
+    },
+    {
+        "repo": "majutsushi/tagbar.git",
+        "vimrc_cmds": [
+            "nnoremap <F8> :TagbarToggle<CR>",
+            "let g:tagbar_autofocus=1"
+        ]
+    },
+    {
+        "repo": "junegunn/fzf.git",
+        "vimrc_cmds": [
+            "map <C-X> :FZF<CR>",
+            "exe \"set rtp+=\".g:dotvim_path.\"/plugins/fzf\""
+        ]
+    },
+    {
+        "repo": "octol/vim-cpp-enhanced-highlight",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "Valloric/YouCompleteMe.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "vim-scripts/cscope.vim.git",
+        "vimrc_cmds": []
+    }
+]

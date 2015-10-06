@@ -3,3 +3,5 @@ plugins
 .tmp
 vimrc
 exuberant-ctags
+plugins_vimrc.vim
+vundleconfig.vim

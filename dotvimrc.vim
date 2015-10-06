@@ -8,11 +8,8 @@ set t_Co=256
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Set the runtimepath, in order to vim find pathogen, so plugins can be installed properly
-exe "set runtimepath=".g:dotvim_path."/plugins/vim-pathogen,".&runtimepath
-
-" Include pathogen
-call pathogen#infect(g:dotvim_path."/plugins/{}")
+" Include Vundle config file
+exe "source ".g:dotvim_path."/vundleconfig.vim"
 
 " Enable syntax highlight
 syntax on
@@ -155,28 +152,5 @@ au! FileType python setl nosmartindent
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*,*.jpg,*.png,*.jpg,*.ttf,*.sfont,*.path,*.ico,*.svg,*.bmp,*.wav,*.xpm,*.ogg,*.snd,*.gif,*.jng,*.pdf,*.o,*.obj,*.exe,*.so,*.pem,*.props,*.filters,*.tiff,*.edc,*.po,*.sb,*.xib,*.JPG,*.GIF,*.class,*.vtt,*.mp4,*.mp3,*.dat,*.dtd,*.otf,*.mht,*.woff,*.webarchive,*.frag,*.vert,*.dll,*.lib,*.oga,*.jar,ChangeLog*,*.a,*.strings,*.t,*.pl,*.ogv,*.jpeg,*.aaf,*.gzip,*.pyc
 
-let g:ctrlp_max_height = 50
-let g:ctrlp_use_caching = 1
-let g:ctrlp_max_files = 0
-"let g:ctrlp_lazy_update = 1
-let g:ctrlp_by_filename = 1
-
-" command-t related
-let g:CommandTMaxCachedDirectories=0
-"let g:CommandTTagIncludeFilenames=1
-let g:CommandTMaxDepth=60
-let g:CommandTMaxFiles=1000000
-let g:CommandTNeverShowDotFiles=1
-let g:CommandTScanDotDirectories=1
-
-let g:tagbar_ctags_bin=g:dotvim_path."/plugins/exuberant-ctags/bin/ctags"
-nnoremap <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus=1
-
-"" Bookmarking
-map bb :ToggleBookmark<CR>
-map bn :NextBookmark<CR>
-map bp :PreviousBookmark<CR>
-
-"" Syntastic
-let g:syntastic_mode_map = { 'mode': 'passive'}
+" source plugins vimrc
+exe "source ".g:dotvim_path."/plugins_vimrc.vim"

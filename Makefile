@@ -1,18 +1,6 @@
 TOP := $(shell pwd)
 
-all: exuberant commandt helptags
-
-exuberant:
-	cd $(TOP)/plugins/exuberant-ctags/;\
-		./configure --prefix=$(TOP)/plugins/exuberant-ctags;\
-		make clean && make && make install
-
-commandt:
-	cd plugins/command-t/ruby/command-t/;\
-		ruby extconf.rb;\
-		make clean && make
-
-helptags:
+all:
 	@test -e vimrc\
 		&& vim -u vimrc -c 'Helptags|quit'\
 		&& echo "Documentation files created"\
