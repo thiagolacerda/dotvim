@@ -169,7 +169,7 @@ let g:CommandTMaxFiles=1000000
 let g:CommandTNeverShowDotFiles=1
 let g:CommandTScanDotDirectories=1
 
-let g:tagbar_ctags_bin=g:dotvim_path."/exuberant-ctags/bin/ctags"
+let g:tagbar_ctags_bin=g:dotvim_path."/plugins/exuberant-ctags/bin/ctags"
 nnoremap <F8> :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 

@@ -3,8 +3,8 @@ TOP := $(shell pwd)
 all: exuberant commandt helptags
 
 exuberant:
-	cd exuberant-ctags/;\
-		./configure --prefix=$(TOP)/exuberant-ctags;\
+	cd $(TOP)/plugins/exuberant-ctags/;\
+		./configure --prefix=$(TOP)/plugins/exuberant-ctags;\
 		make clean && make && make install
 
 commandt:

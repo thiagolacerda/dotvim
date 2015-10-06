@@ -4,6 +4,7 @@ import json
 import os
 import shutil
 import subprocess
+import sys
 
 def _setupDirs():
     if not os.path.exists('plugins'):
@@ -31,21 +32,25 @@ def _getPluginRepos():
     f.close()
     return plugins
 
-
-def _cloneExuberantCTags():
-    subprocess.check_call(['git', 'clone', 'https://github.com/mortice/exuberant-ctags.git'])
-
-
-def _clonePlugins():
+def _cloneOrUpdatePlugins(update):
     plugins = _getPluginRepos()
     os.chdir('plugins')
     for plugin in plugins:
-        command = 'git clone %s' % plugin['repo']
-        subprocess.check_call(['git', 'clone', plugin['repo']])
+        try:
+            if update and os.path.exists(plugin['name']):
+                subprocess.check_call(['git', 'remote', 'update'])
+                subprocess.check_call(['git', 'reset', '--hard', 'origin/master'])
+            else:
+                subprocess.check_call(['git', 'clone', plugin['repo'], plugin['name']])
+        except:
+            pass
 
 
 if __name__ == '__main__':
+    update = False
+    if len(sys.argv) > 1 and sys.argv[1] == '--update':
+        update = True
+
     _setupDirs()
     _setupVimrc()
-    _cloneExuberantCTags()
-    _clonePlugins()
+    _cloneOrUpdatePlugins(update)

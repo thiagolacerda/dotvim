@@ -44,6 +44,10 @@
         "repo": "https://github.com/majutsushi/tagbar.git"
     },
     {
+        "name": "exuberant-ctags",
+        "repo": "https://github.com/mortice/exuberant-ctags.git"
+    },
+    {
         "name": "vim-pathogen",
         "repo": "https://github.com/tpope/vim-pathogen.git"
     }
