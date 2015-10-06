@@ -153,7 +153,7 @@ let xml_syntax_folding=1      " XML
 
 au! FileType python setl nosmartindent
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*,*.jpg,*.png,*.jpg,*.ttf,*.sfont,*.path,*.ico,*.svg,*.bmp,*.wav,*.xpm,*.ogg,*.snd,*.gif,*.jng,*.pdf,*.o,*.obj,*.exe,*.so,*.pem,*.props,*.filters,*.tiff,*.edc,*.po,*.sb,*.xib,*.JPG,*.GIF,*.class,*.vtt,*.mp4,*.mp3,*.dat,*.dtd,*.otf,*.mht,*.woff,*.webarchive,*.frag,*.vert,*.dll,*.lib,*.oga,*.jar,ChangeLog*,*.a,*.strings,*.t,*.pl,*.ogv,*.jpeg,*.aaf,*.gzip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*,*.jpg,*.png,*.jpg,*.ttf,*.sfont,*.path,*.ico,*.svg,*.bmp,*.wav,*.xpm,*.ogg,*.snd,*.gif,*.jng,*.pdf,*.o,*.obj,*.exe,*.so,*.pem,*.props,*.filters,*.tiff,*.edc,*.po,*.sb,*.xib,*.JPG,*.GIF,*.class,*.vtt,*.mp4,*.mp3,*.dat,*.dtd,*.otf,*.mht,*.woff,*.webarchive,*.frag,*.vert,*.dll,*.lib,*.oga,*.jar,ChangeLog*,*.a,*.strings,*.t,*.pl,*.ogv,*.jpeg,*.aaf,*.gzip,*.pyc
 
 let g:ctrlp_max_height = 50
 let g:ctrlp_use_caching = 1
@@ -177,3 +177,6 @@ let g:tagbar_autofocus=1
 map bb :ToggleBookmark<CR>
 map bn :NextBookmark<CR>
 map bp :PreviousBookmark<CR>
+
+"" Syntastic
+let g:syntastic_mode_map = { 'mode': 'passive'}
