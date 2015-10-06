@@ -42,5 +42,9 @@
     {
         "name": "tagbar",
         "repo": "https://github.com/majutsushi/tagbar.git"
+    },
+    {
+        "name": "vim-pathogen",
+        "repo": "https://github.com/tpope/vim-pathogen.git"
     }
 ]
