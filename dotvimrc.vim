@@ -155,5 +155,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,.git,*/build/*,*.jpg,*.png,*.jpg,*.ttf,
 " ctags
 :nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
+" Tab navigation.
+nnoremap ) :tabnext<CR>
+nnoremap ( :tabprev<CR>
+
+" tab move
+nnoremap < :tabmove -1<cr>
+nnoremap > :tabmove +1<cr>
+
 " source plugins vimrc
 exe "source ".g:dotvim_path."/plugins_vimrc.vim"
