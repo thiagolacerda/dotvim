@@ -62,5 +62,13 @@
     {
         "repo": "vim-scripts/cscope.vim.git",
         "vimrc_cmds": []
+    },
+    {
+        "repo": "mileszs/ack.vim.git",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "nfvs/vim-perforce.git",
+        "vimrc_cmds": []
     }
 ]
