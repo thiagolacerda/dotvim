@@ -165,3 +165,21 @@ nnoremap > :tabmove +1<cr>
 
 " source plugins vimrc
 exe "source ".g:dotvim_path."/plugins_vimrc.vim"
+
+" set ctags file based on current dir
+exe "set tags=".$HOME."/.tags/".fnamemodify(getcwd(), ":t")."/tags"
+
+function! s:GenCTags()
+    let currentDir = getcwd()
+    let ctagsDestination = $HOME."/.tags/".fnamemodify(getcwd(), ":t")
+    if empty(glob(ctagsDestination))
+        echo "will create ".ctagsDestination." directory for tags..."
+        execute "silent ! mkdir ".ctagsDestination
+    endif
+    echo "Generating ctags for ".fnamemodify(getcwd(), ":t")." in ".ctagsDestination
+    execute "silent ! find ".currentDir." -name \*.h -print -o -name \*.cpp -print | ctags --fields=+l -f ".ctagsDestination."/tags -L - ".currentDir
+    echo "Done!"
+    execute ':redraw!'
+endfunction
+
+com! -nargs=0 GenerateCtags call <SID>GenCTags()
