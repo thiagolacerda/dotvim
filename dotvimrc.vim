@@ -125,6 +125,9 @@ map <F5> :set list! <enter>
 " QML syntax as javascript
 au BufRead,BufNewFile *.qml set filetype=javascript
 
+" Copy yanked stuff to clipboard
+set clipboard=unnamed
+
 " Show right margin at column 120
 set textwidth=120
 set colorcolumn=+1
