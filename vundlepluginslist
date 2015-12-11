@@ -70,5 +70,11 @@
     {
         "repo": "nfvs/vim-perforce.git",
         "vimrc_cmds": []
+    },
+    {
+        "repo": "chase/vim-ansible-yaml",
+        "vimrc_cmds": [
+            "au BufRead,BufNewFile *.data set filetype=ansible"
+        ]
     }
 ]
