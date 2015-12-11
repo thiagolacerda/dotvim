@@ -183,3 +183,6 @@ function! s:GenCTags()
 endfunction
 
 com! -nargs=0 GenerateCtags call <SID>GenCTags()
+
+" do not add new line at end of files
+set noeol
