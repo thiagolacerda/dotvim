@@ -46,7 +46,7 @@
         "repo": "junegunn/fzf.git",
         "vimrc_cmds": [
             "map <C-X> :FZF<CR>",
-            "exe \"set rtp+=\".g:dotvim_path.\"/plugins/fzf\""
+            "let $FZF_DEFAULT_COMMAND=\"ag -l -p \".g:dotvim_path.\"/agignore\""
         ]
     },
     {
