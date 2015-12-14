@@ -72,8 +72,11 @@ def addVimrcCommands(pluginRepo, commands):
 def _createVundleConfigFile():
     plugins = _getVundlePluginsList()
     f = open('vundleconfig.vim', 'w')
-    f.write('" set the runtime path to include Vundle and initialize\n')
+    f.write('" set the runtime path to include Vundle\n')
     f.write('exe "set rtp+=".g:dotvim_path."/plugins/vundle"\n')
+    f.write('" set the folder to install plugins (we do not want it in ~/.vim\n')
+    f.write('call vundle#rc(g:dotvim_path."/plugins/")\n')
+    f.write('" start vundle!')
     f.write('call vundle#begin()\n')
     f.write('\n" List of plugins\n')
     for plugin in plugins:
