@@ -21,6 +21,16 @@ syntax on
 set foldmethod=syntax
 set foldlevel=9999999
 
+" Folding
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
+
 " Show matching brace
 set showmatch
 
@@ -113,11 +123,10 @@ autocmd BufReadPost *
 
 "set paste
 set pastetoggle=<F11>
-set ignorecase
+
 "set background=light
 set shell=bash
-"set statusline=File:\ %f\ %r%=\|\ Total\ lines:%L\ \|\ Row:%l\ \|\ Col:%c\ \|\ %p%%\ 
-set laststatus=2
+
 set formatoptions+=cro
 
 map <F5> :set list! <enter>
@@ -140,16 +149,6 @@ endif
 if exists("g:dotvim_tmpdir")
     exe "set directory=".g:dotvim_tmpdir
 endif
-
-" Folding
-let javaScript_fold=1         " JavaScript
-let perl_fold=1               " Perl
-let php_folding=1             " PHP
-let r_syntax_folding=1        " R
-let ruby_fold=1               " Ruby
-let sh_fold_enabled=1         " sh
-let vimsyn_folding='af'       " Vim script
-let xml_syntax_folding=1      " XML
 
 au! FileType python setl nosmartindent
 
