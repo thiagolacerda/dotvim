@@ -14,8 +14,6 @@ def _setupDirsAndFiles():
     if not os.path.exists('.tmp'):
         os.makedirs('.tmp')
 
-    open('plugins_vimrc.vim', 'w').close()
-
 def _setupVimrc():
     f = open('vimrc', 'w')
 
@@ -57,20 +55,22 @@ def _applyPatches():
         subprocess.check_call('patch -p1 < %s' % patchFile, shell=True)
         os.chdir(rootDir)
 
-def addVimrcCommands(pluginRepo, commands):
-    if len(commands) == 0:
-        return
+def _addVimrcPluginCommands(plugins):
+    f = open('plugins_vimrc.vim', 'w')
+    for plugin in plugins:
+        commands = plugin['vimrc_cmds']
+        if len(commands) == 0:
+            continue
 
-    f = open('plugins_vimrc.vim', 'a')
-    f.write('" %s\n' % os.path.basename(pluginRepo).split(".git")[0])
-    for command in commands:
-        f.write('%s\n' % command)
+        f.write('" %s\n' % os.path.basename(plugin['repo']))
+        for command in commands:
+            f.write('%s\n' % command)
 
-    f.write('\n')
+        f.write('\n')
+
     f.close()
 
-def _createVundleConfigFile():
-    plugins = _getVundlePluginsList()
+def _createVundleConfigFile(plugins):
     f = open('vundleconfig.vim', 'w')
     f.write('" set the runtime path to include Vundle\n')
     f.write('exe "set rtp+=".g:dotvim_path."/plugins/vundle"\n')
@@ -81,16 +81,64 @@ def _createVundleConfigFile():
     f.write('\n" List of plugins\n')
     for plugin in plugins:
         f.write('Plugin \'%s\'\n' % plugin['repo'])
-        addVimrcCommands(plugin['repo'], plugin['vimrc_cmds'])
 
     f.write('\ncall vundle#end()\n')
     f.write('\nfiletype plugin indent on\n')
     f.close()
 
+def _generateVundleConfigArtifacts():
+    plugins = _getVundlePluginsList()
 
-if __name__ == '__main__':
+    _createVundleConfigFile(plugins)
+    _addVimrcPluginCommands(plugins)
+
+def _setup():
     _setupDirsAndFiles()
     _getVundle()
     _applyPatches()
     _setupVimrc()
-    _createVundleConfigFile()
+    _generateVundleConfigArtifacts()
+
+def _install():
+    vimrcPath = os.path.expanduser('~/.vimrc')
+    if os.path.islink(vimrcPath) or os.path.isfile(vimrcPath):
+        raise Exception('~/.vimrc already exists, please remove it before installing dotvim')
+
+    dotvimVimrcPath = '%s/vimrc' % os.getcwd()
+    os.symlink(dotvimVimrcPath, vimrcPath)
+    print 'dotvim installed!'
+
+def _uninstall():
+    vimrcPath = os.path.expanduser('~/.vimrc')
+    if os.path.islink(vimrcPath) or os.path.isfile(vimrcPath):
+        os.remove(vimrcPath)
+
+    print 'dotvim uninstalled!'
+
+def _clean():
+    _uninstall()
+    if (os.path.exists('plugins')):
+        shutil.rmtree('plugins')
+    if (os.path.exists('vundleconfig.vim')):
+        os.remove('vundleconfig.vim')
+    if (os.path.exists('plugins_vimrc.vim')):
+        os.remove('plugins_vimrc.vim')
+    if (os.path.exists('vimrc')):
+        os.remove('vimrc')
+
+    print 'dotvim cleaned!'
+
+if __name__ == '__main__':
+    if len(sys.argv) >= 2:
+        arg = sys.argv[1]
+        if arg == 'uninstall':
+            _uninstall()
+        elif arg == 'clean':
+            _clean()
+        elif arg == 'install':
+            _setup()
+            _install()
+        else:
+            print 'unknown argument: %s' % arg
+    else:
+        _setup()
