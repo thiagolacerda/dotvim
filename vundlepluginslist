@@ -76,5 +76,13 @@
         "vimrc_cmds": [
             "au BufRead,BufNewFile *.data set filetype=ansible"
         ]
+    },
+    {
+        "repo": "bling/vim-airline",
+        "vimrc_cmds": [
+            "let g:airline#extensions#tabline#enabled=1",
+            "let g:airline#extensions#tabline#fnamemod=':t'",
+            "let g:airline#extensions#tabline#show_tab_nr=0"
+        ]
     }
 ]
