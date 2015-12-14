@@ -1,0 +1,24 @@
+From 2e15371d64f937c1d42e73dc1274276dba9bfcfb Mon Sep 17 00:00:00 2001
+From: Thiago Lacerda <thiagotbl@gmail.com>
+Date: Fri, 11 Dec 2015 15:42:04 -0800
+Subject: [PATCH] Fixing check_bundle_name function
+
+---
+ autoload/vundle/config.vim | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/autoload/vundle/config.vim b/autoload/vundle/config.vim
+index 0e02b11..0ff41b8 100644
+--- a/autoload/vundle/config.vim
++++ b/autoload/vundle/config.vim
+@@ -92,6 +92,7 @@ endf
+ " ---------------------------------------------------------------------------
+ funct! s:check_bundle_name(bundle)
+   if has_key(s:bundle_names, a:bundle.name)
++    \ && s:bundle_names[a:bundle.name]!=a:bundle.name_spec
+     echoerr 'Vundle error: Name collision for Plugin ' . a:bundle.name_spec .
+           \ '. Plugin ' . s:bundle_names[a:bundle.name] .
+           \ ' previously used the name "' . a:bundle.name . '"' .
+--
+2.6.1
+

@@ -45,6 +45,18 @@ def _getVundlePluginsList():
     f.close()
     return plugins
 
+def _applyPatches():
+    f = open('patches/patches.info')
+    patches = json.load(f)
+    f.close()
+    rootDir = os.getcwd()
+    patchesDir = '%s/patches' % rootDir
+    for patch in patches:
+        os.chdir(patch['dir'])
+        patchFile = '%s/%s' % (patchesDir, patch['file'])
+        subprocess.check_call('patch -p1 < %s' % patchFile, shell=True)
+        os.chdir(rootDir)
+
 def addVimrcCommands(pluginRepo, commands):
     if len(commands) == 0:
         return
@@ -76,5 +88,6 @@ def _createVundleConfigFile():
 if __name__ == '__main__':
     _setupDirsAndFiles()
     _getVundle()
+    _applyPatches()
     _setupVimrc()
     _createVundleConfigFile()

@@ -1,0 +1,6 @@
+[
+    {
+        "dir": "plugins/vundle",
+        "file": "0001-Fixing-check_bundle_name-function.patch"
+    }
+]
