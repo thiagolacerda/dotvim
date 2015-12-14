@@ -1,34 +1,34 @@
 [
     {
-        "repo": "tpope/vim-fugitive.git",
+        "repo": "tpope/vim-fugitive",
         "vimrc_cmds": []
     },
     {
-        "repo": "scrooloose/syntastic.git",
+        "repo": "scrooloose/syntastic",
         "vimrc_cmds": ["let g:syntastic_mode_map = { 'mode': 'passive'}"]
     },
     {
-        "repo": "vim-scripts/a.vim.git",
+        "repo": "vim-scripts/a.vim",
         "vimrc_cmds": []
     },
     {
-        "repo": "scrooloose/nerdtree.git",
+        "repo": "scrooloose/nerdtree",
         "vimrc_cmds": []
     },
     {
-        "repo": "corntrace/bufexplorer.git",
+        "repo": "corntrace/bufexplorer",
         "vimrc_cmds": []
     },
     {
-        "repo": "tpope/vim-surround.git",
+        "repo": "tpope/vim-surround",
         "vimrc_cmds": []
     },
     {
-        "repo": "vim-scripts/AutoClose.git",
+        "repo": "vim-scripts/AutoClose",
         "vimrc_cmds": []
     },
     {
-        "repo": "dterei/VimBookmarking.git",
+        "repo": "dterei/VimBookmarking",
         "vimrc_cmds": [
             "map bb :ToggleBookmark<CR>",
             "map bn :NextBookmark<CR>",
@@ -36,14 +36,14 @@
         ]
     },
     {
-        "repo": "majutsushi/tagbar.git",
+        "repo": "majutsushi/tagbar",
         "vimrc_cmds": [
             "nnoremap <F8> :TagbarToggle<CR>",
             "let g:tagbar_autofocus=1"
         ]
     },
     {
-        "repo": "junegunn/fzf.git",
+        "repo": "junegunn/fzf",
         "vimrc_cmds": [
             "map <C-X> :FZF<CR>",
             "let $FZF_DEFAULT_COMMAND=\"ag -l -p \".g:dotvim_path.\"/agignore\""
@@ -54,21 +54,21 @@
         "vimrc_cmds": []
     },
     {
-        "repo": "Valloric/YouCompleteMe.git",
+        "repo": "Valloric/YouCompleteMe",
         "vimrc_cmds": [
             "let g:ycm_min_num_of_chars_for_completion=4"
         ]
     },
     {
-        "repo": "vim-scripts/cscope.vim.git",
+        "repo": "vim-scripts/cscope.vim",
         "vimrc_cmds": []
     },
     {
-        "repo": "mileszs/ack.vim.git",
+        "repo": "mileszs/ack.vim",
         "vimrc_cmds": []
     },
     {
-        "repo": "nfvs/vim-perforce.git",
+        "repo": "nfvs/vim-perforce",
         "vimrc_cmds": []
     },
     {
