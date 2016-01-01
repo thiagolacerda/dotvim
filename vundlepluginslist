@@ -91,5 +91,12 @@
             "endfunction",
             "autocmd VimEnter * call AirlineInit()"
         ]
+    },
+    {
+        "repo": "mhinz/vim-signify",
+        "vimrc_cmds": [
+            "\" use this plugin only for perforce",
+            "let g:signify_vcs_list = ['perforce']"
+        ]
     }
 ]
