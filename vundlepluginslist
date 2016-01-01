@@ -13,7 +13,9 @@
     },
     {
         "repo": "scrooloose/nerdtree",
-        "vimrc_cmds": []
+        "vimrc_cmds": [
+            "map <C-n> :NERDTreeToggle<CR>"
+        ]
     },
     {
         "repo": "corntrace/bufexplorer",
