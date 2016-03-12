@@ -80,11 +80,12 @@
         ]
     },
     {
-        "repo": "bling/vim-airline",
+        "repo": "vim-airline/vim-airline",
         "vimrc_cmds": [
             "let g:airline#extensions#tabline#enabled=1",
             "let g:airline#extensions#tabline#fnamemod=':t'",
-            "let g:airline#extensions#tabline#show_tab_nr=0",
+            "let g:airline#extensions#tabline#show_tab_nr=1",
+            "let g:airline#extensions#tabline#tab_nr_type=2",
             "\" show the current_line/total_lines in status bar",
             "function! AirlineInit()",
             "    let g:airline_section_z=\"%3p%% %{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#/%L:%3v\"",
