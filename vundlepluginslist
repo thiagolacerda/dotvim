@@ -26,16 +26,8 @@
         "vimrc_cmds": []
     },
     {
-        "repo": "vim-scripts/AutoClose",
+        "repo": "Raimondi/delimitMate",
         "vimrc_cmds": []
-    },
-    {
-        "repo": "dterei/VimBookmarking",
-        "vimrc_cmds": [
-            "map bb :ToggleBookmark<CR>",
-            "map bn :NextBookmark<CR>",
-            "map bp :PreviousBookmark<CR>"
-        ]
     },
     {
         "repo": "majutsushi/tagbar",
@@ -48,7 +40,7 @@
         "repo": "junegunn/fzf",
         "vimrc_cmds": [
             "map <C-X> :FZF<CR>",
-            "let $FZF_DEFAULT_COMMAND=\"ag -l -p \".g:dotvim_path.\"/agignore\""
+            "let $FZF_DEFAULT_COMMAND=\"find . -not -path '*/\\.*' -type f ! -iname *.d ! -iname *.o ! -iname *.moc ! -iname *.twb ! -iname *.twbx ! -name *.dll ! -name *.dylib ! -iname *.a ! -iname *.bin ! -iname *.gif ! -iname *.lib ! -iname *.xls ! -iname *.xlsx ! -iname *.png ! -iname *.class ! -iname *.log ! -iname *.ninjalog ! -iname *.pyc ! -iname *.xsd ! -iname moc_* ! -iname *~\""
         ]
     },
     {
@@ -98,6 +90,35 @@
         "vimrc_cmds": [
             "\" use this plugin only for perforce",
             "let g:signify_vcs_list = ['perforce']"
+        ]
+    },
+    {
+        "repo": "blueyed/vim-diminactive",
+        "vimrc_cmds": [
+            "let g:diminactive_use_syntax = 1"
+        ]
+    },
+    {
+        "repo": "Konfekt/FastFold",
+        "vimrc_cmds": [
+            "let g:fastfold_fold_command_suffixes = []"
+        ]
+    },
+    {
+        "repo": "airblade/vim-gitgutter",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "itchyny/lightline.vim",
+        "vimrc_cmds": [
+            "let g:lightline = {",
+            "    \\ 'active': {",
+            "    \\     'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ]",
+            "    \\ },",
+            "    \\ 'component': {",
+            "    \\     'lineinfo': \"%{line('.') . '/' . line('$')}:%-2v\"",
+            "    \\ }",
+            "\\ }"
         ]
     }
 ]
