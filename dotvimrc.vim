@@ -151,10 +151,6 @@ nnoremap ( :tabprev<CR>
 nnoremap < :tabmove -1<cr>
 nnoremap > :tabmove +1<cr>
 
-" Buffer navigation.
-nnoremap . :bnext<CR>
-nnoremap , :bprevious<CR>
-
 " source plugins vimrc
 exe "source ".g:dotvim_path."/plugins_vimrc.vim"
 
