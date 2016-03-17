@@ -40,7 +40,7 @@
         "repo": "junegunn/fzf",
         "vimrc_cmds": [
             "map <C-X> :FZF<CR>",
-            "let $FZF_DEFAULT_COMMAND=\"find . -not -path '*/\\.*' -type f ! -iname *.d ! -iname *.o ! -iname *.moc ! -iname *.twb ! -iname *.twbx ! -name *.dll ! -name *.dylib ! -iname *.a ! -iname *.bin ! -iname *.gif ! -iname *.lib ! -iname *.xls ! -iname *.xlsx ! -iname *.png ! -iname *.class ! -iname *.log ! -iname *.ninjalog ! -iname *.pyc ! -iname *.xsd ! -iname moc_* ! -iname *~\""
+            "let $FZF_DEFAULT_COMMAND=\"find . -not -path '*/\\.*' -type f ! -iname '*.d' ! -iname '*.o' ! -iname '*.moc' ! -iname '*.twb' ! -iname '*.twbx' ! -name '*.dll' ! -name '*.dylib' ! -iname '*.a' ! -iname '*.bin' ! -iname '*.gif' ! -iname '*.lib' ! -iname '*.xls' ! -iname '*.xlsx' ! -iname '*.png' ! -iname '*.class' ! -iname '*.log' ! -iname '*.ninjalog' ! -iname '*.pyc' ! -iname '*.xsd' ! -iname 'moc_*' ! -iname '*~' ! -iname '*.pdf' ! -iname '*.eps' ! -iname '*.gz'\""
         ]
     },
     {
