@@ -120,6 +120,11 @@ map <F5> :set list! <enter>
 " QML syntax as javascript
 au BufRead,BufNewFile *.qml set filetype=javascript
 
+" Jade files
+autocmd BufNewFile,BufReadPost *.jade set filetype=pug
+autocmd BufNewFile,BufReadPost *.pug set filetype=pug
+au FileType pug setl sw=2 sts=2 et
+
 " Copy yanked stuff to clipboard
 set clipboard=unnamed
 
@@ -174,3 +179,7 @@ com! -nargs=0 GenerateCtags call <SID>GenCTags()
 
 " do not add new line at end of files
 set noeol
+
+set number
+
+hi Search cterm=NONE ctermfg=white ctermbg=blue

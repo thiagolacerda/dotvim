@@ -120,5 +120,9 @@
             "    \\ }",
             "\\ }"
         ]
+    },
+    {
+        "repo": "leafgarland/typescript-vim",
+        "vimrc_cmds": []
     }
 ]
