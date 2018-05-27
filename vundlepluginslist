@@ -52,16 +52,6 @@
         "vimrc_cmds": []
     },
     {
-        "repo": "Valloric/YouCompleteMe",
-        "vimrc_cmds": [
-            "let g:ycm_min_num_of_chars_for_completion=4"
-        ]
-    },
-    {
-        "repo": "vim-scripts/cscope.vim",
-        "vimrc_cmds": []
-    },
-    {
         "repo": "mileszs/ack.vim",
         "vimrc_cmds": []
     },
