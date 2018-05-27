@@ -113,6 +113,7 @@ def _install():
 
     dotvimVimrcPath = '%s/vimrc' % os.getcwd()
     os.symlink(dotvimVimrcPath, confFilePath)
+    subprocess.check_call(['nvim' if is_neovim else 'vim', '+PluginInstall', '+qall!'])
     print 'dotvim installed!'
 
 def _uninstall():
