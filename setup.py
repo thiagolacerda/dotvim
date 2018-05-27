@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
+import argparse
 import json
 import os
 import shutil
 import subprocess
 import sys
+
+is_neovim = True
 
 def _setupDirsAndFiles():
     if not os.path.exists('plugins'):
@@ -97,21 +100,28 @@ def _setup():
     _setupVimrc()
     _generateVundleConfigArtifacts()
 
+def _confFile():
+    return '~/.config/nvim/init.vim' if is_neovim else '~/.vimrc'
+
 def _install():
-    vimrcPath = os.path.expanduser('~/.vimrc')
-    if os.path.islink(vimrcPath) or os.path.isfile(vimrcPath):
-        raise Exception('~/.vimrc already exists, please remove it before installing dotvim')
+    confFilePath = os.path.expanduser(_confFile())
+    if os.path.islink(confFilePath) or os.path.isfile(confFilePath):
+        raise Exception('%s already exists, please remove it before installing dotvim' % confFile)
+
+    if is_neovim and not os.path.exists(os.path.dirname(confFilePath)):
+        os.makedirs(os.path.dirname(confFilePath))
 
     dotvimVimrcPath = '%s/vimrc' % os.getcwd()
-    os.symlink(dotvimVimrcPath, vimrcPath)
+    os.symlink(dotvimVimrcPath, confFilePath)
     print 'dotvim installed!'
 
 def _uninstall():
-    vimrcPath = os.path.expanduser('~/.vimrc')
-    if os.path.islink(vimrcPath) or os.path.isfile(vimrcPath):
-        os.remove(vimrcPath)
-
-    print 'dotvim uninstalled!'
+    confFilePath = os.path.expanduser(_confFile())
+    if os.path.islink(confFilePath) and os.path.realpath(confFilePath) == '%s/vimrc' % os.getcwd():
+        os.remove(confFilePath)
+        print 'dotvim uninstalled!'
+    else:
+        raise Exception('Could not uninstall dotvim. Either because it is not installed or %s does not point to dotvim configuration' % confFilePath)
 
 def _clean():
     _uninstall()
@@ -127,16 +137,23 @@ def _clean():
     print 'dotvim cleaned!'
 
 if __name__ == '__main__':
-    if len(sys.argv) >= 2:
-        arg = sys.argv[1]
-        if arg == 'uninstall':
-            _uninstall()
-        elif arg == 'clean':
-            _clean()
-        elif arg == 'install':
-            _setup()
-            _install()
-        else:
-            print 'unknown argument: %s' % arg
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--uninstall", help="uninstall dotvim", action="store_true")
+    parser.add_argument("--clean", help="uninstall dot vim and clean everything", action="store_true")
+    parser.add_argument("--setup", help="setup dotvim structure and update plugins (default action)", action="store_true")
+    parser.add_argument("--install", help="setup dotvim structure, update plugins and install (includes --setup)", action="store_true")
+    parser.add_argument("-v", help="setup for vim (neovim used by default)", action="store_true")
+    args = parser.parse_args()
+
+    if args.v:
+        is_neovim = False;
+
+    if args.install:
+        _setup()
+        _install()
+    elif args.uninstall:
+        _uninstall()
+    elif args.clean:
+        _clean()
     else:
         _setup()
