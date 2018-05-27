@@ -1,5 +1,4 @@
-Inspired by omailson's dotvim (https://github.com/omailson/dotvim), I decided
-to make my own, with my preferences
+Inspired by omailson's dotvim (https://github.com/omailson/dotvim)
 
 == Dependencies ==
 
@@ -12,7 +11,9 @@ git
 
 Run in the root project dir:
 
-$ ./setup.py
+By default the configuration is created for NeoVim. If you want to work with Vim, use the -v flag in your commands
+
+$ ./setup.py [--setup]
     -> only creates the ground stuff needed for installation but does not install it (useful to update vundle.vim)
     This will:
 
@@ -22,14 +23,14 @@ $ ./setup.py
       vundle later)
     * Create a .backup and .tmp dir, for backup and temporary files, respectively
 
-$ ./setup.py install
+$ ./setup.py --install
     -> setup all the ground stuff need for the installation (see above) and installs dotvim (basically creating a
-       symlink in your home dir ~/.vimrc to the vimrc inside the project folder)
+       symlink in your home dir (n)vim configuration file to the vimrc inside the project folder)
 
-$ ./setup.py uninstall
-    -> uninstalls ~/.vimrc
+$ ./setup.py --uninstall
+    -> remove the installed configuration file from your home folder
 
-$ ./setup.py clean
+$ ./setup.py --clean
    -> wipe everything out, setting the project to a clean state (like if it was just cloned)
 
 Have Fun!
