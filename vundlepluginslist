@@ -114,5 +114,9 @@
             "    \\ }",
             "\\ }"
         ]
+    },
+    {
+        "repo": "jeetsukumaran/vim-buffergator",
+        "vimrc_cmds": []
     }
 ]
