@@ -24,7 +24,13 @@ def _setupVimrc():
     f.write('" dotvim path\nlet g:dotvim_path = "%s"\n' % path)
     f.write('" directory to store backup files\nlet g:dotvim_backupdir = "%s"\n' % (os.getcwd() + '/.backup'))
     f.write('" directory to store temp files\nlet g:dotvim_tmpdir = "%s"\n' % (os.getcwd() + '/.tmp/'))
-    f.write('" source the real vimrc file\nexe "source ".g:dotvim_path."/dotvimrc.vim"')
+    f.write('" source the real vimrc file\nexe "source ".g:dotvim_path."/dotvimrc.vim"\n')
+    f.write('" load and custom config to override the default one\n')
+    f.write('if isdirectory(g:dotvim_path."/custom")\n')
+    f.write('    for f in split(glob(g:dotvim_path."/custom/*.vim"), "\\n")\n')
+    f.write('        exe "source ".f\n')
+    f.write('    endfor\n')
+    f.write('endif\n')
     f.close()
 
 def _getVundle():
