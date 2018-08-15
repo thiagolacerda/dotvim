@@ -129,7 +129,7 @@ map <F5> :set list! <enter>
 au BufRead,BufNewFile *.qml set filetype=javascript
 
 " Copy yanked stuff to clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Show right margin at column 120
 set textwidth=120
@@ -182,3 +182,10 @@ com! -nargs=0 GenerateCtags call <SID>GenCTags()
 
 " do not add new line at end of files
 set noeol
+
+set number
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
