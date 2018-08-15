@@ -83,7 +83,7 @@
         "repo": "mhinz/vim-signify",
         "vimrc_cmds": [
             "\" use this plugin only for perforce",
-            "let g:signify_vcs_list = ['perforce']"
+            "let g:signify_vcs_list = ['perforce', 'hg', 'git']"
         ]
     },
     {
@@ -97,10 +97,6 @@
         "vimrc_cmds": [
             "let g:fastfold_fold_command_suffixes = []"
         ]
-    },
-    {
-        "repo": "airblade/vim-gitgutter",
-        "vimrc_cmds": []
     },
     {
         "repo": "itchyny/lightline.vim",
@@ -117,6 +113,14 @@
     },
     {
         "repo": "jeetsukumaran/vim-buffergator",
+        "vimrc_cmds": []
+    },
+    {
+        "repo": "flazz/vim-colorschemes",
+        "vimrc_cmds": ["colorscheme molokai_dark"]
+    },
+    {
+        "repo": "leafgarland/typescript-vim",
         "vimrc_cmds": []
     }
 ]
