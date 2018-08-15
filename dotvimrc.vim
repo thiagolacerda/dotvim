@@ -30,6 +30,14 @@ set incsearch     " incremental search
 set ignorecase    " ignore case in search
 set smartcase     " except when an uppercase string is searched
 
+" use binary mode so no new line is added in the end of file when saved
+" this needs to be set before tab to space indentation settings
+set binary
+
+" Set search highlight color so it does not hurt on the eyes
+hi Search ctermbg=red
+hi Search ctermfg=white
+
 " Misc. options
 set showcmd       " mostra o comando digitado (eg: digitando :set filetype neste arquivo, mostra filetype=vim)
 set wildmenu      " no modo de comando, ao teclar TAB, completa o que foi escrito mostrando as opções em um menu
