@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import argparse
 import json
@@ -120,13 +120,13 @@ def _install():
     dotvimVimrcPath = '%s/vimrc' % os.getcwd()
     os.symlink(dotvimVimrcPath, confFilePath)
     subprocess.check_call(['nvim' if is_neovim else 'vim', '+PluginInstall', '+qall!'])
-    print 'dotvim installed!'
+    print('dotvim installed!')
 
 def _uninstall():
     confFilePath = os.path.expanduser(_confFile())
     if os.path.islink(confFilePath) and os.path.realpath(confFilePath) == '%s/vimrc' % os.getcwd():
         os.remove(confFilePath)
-        print 'dotvim uninstalled!'
+        print('dotvim uninstalled!')
     else:
         raise Exception('Could not uninstall dotvim. Either because it is not installed or %s does not point to dotvim configuration' % confFilePath)
 
@@ -141,7 +141,7 @@ def _clean():
     if (os.path.exists('vimrc')):
         os.remove('vimrc')
 
-    print 'dotvim cleaned!'
+    print('dotvim cleaned!')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
